@@ -1,0 +1,45 @@
+{
+  "name": "vephla-productivity-suite",
+  "version": "1.0.0",
+  "description": "Vephla Productivity-suite",
+  "main": "server.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Don-pizu/vephla-productivity-suite.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Don-pizu/vephla-productivity-suite/issues"
+  },
+  "homepage": "https://github.com/Don-pizu/vephla-productivity-suite#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cloudinary": "^1.41.3",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "ess": "^1.0.2",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.2.1",
+    "helmet": "^8.1.0",
+    "http": "^0.0.1-security",
+    "jsonwebtoken": "^9.0.3",
+    "mongo-sanitize": "^1.1.0",
+    "mongoose": "^9.1.2",
+    "multer": "^2.0.2",
+    "multer-storage-cloudinary": "^4.0.0",
+    "path": "^0.12.7",
+    "resend": "^6.7.0",
+    "socket.io": "^4.8.1",
+    "xss-clean": "^0.1.4"
+  }
+}
