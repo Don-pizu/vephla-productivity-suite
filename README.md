@@ -2,38 +2,58 @@
 Vephla Productivity-suite
 
 ## Description
-The **Vephla Productivity Suite** is a full-stack backend application designed to demonstrate advanced backend engineering concepts using Node.js, Express.js and MongoDB.
+Vephla Productivity Suite is a production-grade backend system built with Node.js, Express.js, and MongoDB, designed to simulate the core backend architecture of a modern SaaS productivity platform.
 
-The system provides secure authentication, role-based access control, CRUD-based productivity modules (Notes, Tasks, and Files), real-time communication via Socket.io, and optional GraphQL integration.  
-It simulates a production-ready backend suitable for modern SaaS productivity platforms.
+The application demonstrates secure authentication workflows, role-based access control, modular CRUD systems, real-time communication, file handling, API documentation, and optional GraphQL integration.
 
-This project serves as a **capstone demonstration** of backend architecture, API design, security, real-time systems, and deployment best practices.
-
+This project serves as a capstone backend engineering project, emphasizing scalability, security, maintainability, and clean architectural patterns.
 
 ## Key Features
 - JWT-based Authentication & Authorization
+- Email OTP verification flow
+- Password reset via email token
 - Role-Based Access Control (RBAC)
   - Admin
   - Standard User
-- CRUD Operations
-  - Notes Management
-  - Tasks Management
-  - File Uploads (Profile images / attachments)
-- Real-Time Communication
-  - Chat system
-  - Notifications (Socket.io)
-- RESTful API Architecture
-- Optional GraphQL API (`/graphql`)
-- Secure File Handling (Multer / Cloudinary)
-- MongoDB Persistent Storage
-- Production-Level Security
-  - Helmet
-  - Rate Limiting
-  - Mongo Sanitize
-  - XSS Protection
-- API Documentation (Postman / Swagger)
-- Cloud Deployment (Render / Railway)
+- Secure password hashing (bcrypt)
+- HTTP security headers (Helmet)
+- Rate limiting & input sanitization
+- XSS and NoSQL injection protection
+  
+## Productivity Modules
+# Notes
+- Create, update, delete notes
+- File attachments (images/documents)
+- Tag-based filtering
+- Admin access to all notes
 
+# Tasks
+- Task assignment by email
+- Status updates
+- Due dates
+- Attachments
+- Admin oversight
+
+# Files
+- Profile image uploads
+- Attachments via Cloudinary
+
+# Real-Time Features
+- Socket.io-powered chat system
+- Room-based messaging
+- File uploads in chat
+- Real-time notifications
+
+# API Architecture
+- RESTful API (primary)
+- Optional GraphQL API (/graphql)
+- Swagger API Documentation
+- Postman collections
+
+# Deployment Ready
+- Environment-based configuration
+- Cloud-ready (Render)
+- Redis-supported session handling (optional)
 
 ## Tech Stack
 - **Node.js**
@@ -90,21 +110,76 @@ node server.js
 ## Environment Configuration
 Create a .env
 PORT=5000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
-JWT_EXPIRES_IN=1d
+MONGO_URI=
+JWT_SECRET=
+JWT_EXPIRES_IN=
+
+CLOUDINARY_CLOUD_NAME=
+CLOUDINARY_API_KEY=
+CLOUDINARY_API_SECRET=
+NODE_ENV=
+
+RESEND_API_KEY=
+FROM_EMAIL=
+
+REDIS_HOST=
+REDIS_PORT=
+REDIS_PASS=
+REDIS_URL=
+
+## API Documentation
+# Swagger UI
+  http://localhost:5000/api-docs
 
 
 ## API Endpoints
 
 ## Auth Routes
-| Method | Endpoint                    | Description            | Access  |
-| ------ | --------------------------- | ---------------------- | ------- |
-| POST   | `/api/auth/register`        | Register new user      | Public  |
-| POST   | `/api/auth/login`           | Login user             | Public  |
-| GET    | `/api/auth/me`              | Get authenticated user | Private |
-| GET    | `/api/auth/users`           | Get all users          | Admin   |
-| PUT    | `/api/auth/update-role/:id` | Update user role       | Admin   |
+| Method | Endpoint                          | Access |
+| ------ | --------------------------------- | ------ |
+| POST   | `/api/auth/register`              | Public |
+| POST   | `/api/auth/verifyOtp`             | Public |
+| POST   | `/api/auth/resendOtp`             | Public |
+| POST   | `/api/auth/login`                 | Public |
+| POST   | `/api/auth/forgotPassword`        | Public |
+| POST   | `/api/auth/reset-password/:token` | Public |
+| GET    | `/api/auth/me`                    | User   |
+| PUT    | `/api/auth/update`                | User   |
+| GET    | `/api/auth/allusers`              | Admin  |
+| GET    | `/api/auth/user/:id`              | Admin  |
+
+## Notes Routes
+| Method | Endpoint         | Access      |
+| ------ | ---------------- | ----------- |
+| POST   | `/api/notes`     | User        |
+| GET    | `/api/notes`     | User        |
+| GET    | `/api/notes/:id` | User        |
+| PUT    | `/api/notes/:id` | Owner/Admin |
+| DELETE | `/api/notes/:id` | Owner/Admin |
+| GET    | `/api/allNotes`  | Admin       |
+
+## Task Routes
+| Method | Endpoint         | Access         |
+| ------ | ---------------- | -------------- |
+| POST   | `/api/task`      | User           |
+| GET    | `/api/tasks`     | User           |
+| GET    | `/api/tasks/:id` | User           |
+| PUT    | `/api/tasks/:id` | Assigned/Admin |
+| PUT    | `/api/task/:id`  | Owner/Admin    |
+| DELETE | `/api/tasks/:id` | Owner/Admin    |
+| GET    | `/api/allTasks`  | Admin          |
+
+## chat 
+| Method | Endpoint                | Access |
+| ------ | ----------------------- | ------ |
+| GET    | `/api/messages/:roomId` | User   |
+| POST   | `/api/messages/upload`  | User   |
+
+
+## GraphQL API
+  POST /graphql
+
+
 
 
 ## Real-Time Communication (Socket.io)

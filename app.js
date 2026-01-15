@@ -14,9 +14,14 @@ const http = require ('http');
 const cors = require("cors");
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
+const { swaggerUi, swaggerSpec } = require('./swagger');
 
 
 const authRoutes = require('./routes/authRoutes');
+const noteRoutes = require('./routes/noteRoutes');
+const taskRoutes = require('./routes/taskRoutes');
+const chatRoutes = require('./routes/chatRoutes');
+const graphqlMiddleware = require("./graphql");
 
 
 //DB connection
@@ -29,6 +34,11 @@ app.use(express.urlencoded({ extended: true }));
 
 //server frontend static
 app.use(express.static(path.join(__dirname, "frontend"))); // serve frontend
+
+
+// Increase payload limit
+app.use(express.json({ limit: "50mb" }));
+app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
 // Security hardening
 //helmet
@@ -69,6 +79,9 @@ app.use(
 
 
 
+//to work from vercel frontend i will have to comment this static out
+app.use(express.static(path.join(__dirname, "frontend"))); // serve frontend
+
 
 
 
@@ -108,6 +121,13 @@ app.use(cors({
 
 //Routes
 app.use('/api/auth', authRoutes);
+app.use('/api', noteRoutes);
+app.use('/api', taskRoutes);
+app.use('/api', chatRoutes);
 
+// Swagger docs route
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+//GraphQL endpoint
+app.use("/graphql", graphqlMiddleware);
 
 module.exports = app;

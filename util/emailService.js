@@ -103,7 +103,7 @@ exports.fortgotPassOtpEmail = async (to, otp) => {
     });
 
     console.log(`✅ OTP email sent to ${to}: ${otp}`);
-    console.log("Resend response:", data);
+    //console.log("Resend response:", data);
     return data;
   } catch (err) {
     console.error("❌ Error sending OTP email:", err);
