@@ -40,7 +40,7 @@ sendBtn.addEventListener("click", async () => {
     const formData = new FormData();
     formData.append("file", file);
 
-    const res = await fetch("http://localhost:5000/api/message/upload", {
+    const res = await fetch("http://localhost:5000/api/messages/upload", {
       method: "POST",
        headers: {
       Authorization: `Bearer ${token}`   // Add auth header

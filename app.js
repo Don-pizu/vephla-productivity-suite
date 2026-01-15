@@ -21,7 +21,7 @@ const authRoutes = require('./routes/authRoutes');
 const noteRoutes = require('./routes/noteRoutes');
 const taskRoutes = require('./routes/taskRoutes');
 const chatRoutes = require('./routes/chatRoutes');
-const graphqlMiddleware = require("./graphql");
+const graphqlHandler = require("./graphql");
 
 
 //DB connection
@@ -128,6 +128,6 @@ app.use('/api', chatRoutes);
 // Swagger docs route
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 //GraphQL endpoint
-app.use("/graphql", graphqlMiddleware);
+app.use("/graphql", graphqlHandler);
 
 module.exports = app;
