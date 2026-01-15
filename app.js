@@ -61,7 +61,7 @@ app.use(
         "https://cdn.jsdelivr.net",   // allow worker importScripts
         "https://cdn.socket.io",
         "http://localhost:5000",
-        "https://.onrender.com",
+        "https://vephla-productivity-suite-crl2.onrender.com",
         "https://res.cloudinary.com"
       ],
       imgSrc: [
@@ -69,7 +69,7 @@ app.use(
         "data:", 
         "blob:", 
         "http://localhost:5000", 
-        "https://.onrender.com", 
+        "https://vephla-productivity-suite-crl2.onrender.com", 
         "https://res.cloudinary.com"
       ], // FIX: allow blob: images
     },
@@ -97,9 +97,9 @@ app.use('/api', limiter);
 
 // CORS configuration
 const allowedOrigins = [
-  'http://localhost:5000',   // If frontend serves on 5000
-  'null', //To allow frontend guys to work freely for now
-  //'https://onrender.com', //deployed backend 
+  //'http://localhost:5000',   // If frontend serves on 5000
+  //'null', //To allow frontend guys to work freely for now
+  'https://vephla-productivity-suite-crl2.onrender.com', //deployed backend 
   //'https://netlify.app'  // deployed frontend  
   
   ]; 

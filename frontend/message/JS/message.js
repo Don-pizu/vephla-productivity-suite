@@ -1,3 +1,12 @@
+const API = 'https://vephla-productivity-suite-crl2.onrender.com/api'; // Production backend
+
+const APP = 'https://vephla-productivity-suite-crl2.onrender.com'
+
+
+//const API = 'https://localhost:5000/api'; // Production backend
+
+//const APP = 'https://localhost:5000'
+
 const statusEl = document.getElementById("status");
 const chatEl = document.getElementById("chat");
 const typingEl = document.getElementById("typing");
@@ -5,8 +14,17 @@ const joinBtn = document.getElementById("joinBtn");
 const sendBtn = document.getElementById("sendBtn");
 const token = localStorage.getItem("token");
 
+if (!token) {
+  statusEl.textContent = "🔴 Please login first";
+  return;
+}
 
-const socket = io("http://localhost:5000", { transports: ["websocket", "polling"] });
+const socket = io(APP, { 
+  transports: ["websocket"],
+  auth: {
+    token
+  }
+  });
 
 socket.on("connect", () => {
   statusEl.textContent = "🟢 Connected: " + socket.id;
@@ -40,7 +58,7 @@ sendBtn.addEventListener("click", async () => {
     const formData = new FormData();
     formData.append("file", file);
 
-    const res = await fetch("http://localhost:5000/api/messages/upload", {
+    const res = await fetch(`${API}/messages/upload`, {
       method: "POST",
        headers: {
       Authorization: `Bearer ${token}`   // Add auth header

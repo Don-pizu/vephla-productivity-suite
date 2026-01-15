@@ -19,7 +19,7 @@ const options = {
       },
       
       {
-        url: 'https://task-manager-qzog.onrender.com/api', // for Render deployment
+        url: 'https://vephla-productivity-suite-crl2.onrender.com/api', // for Render deployment
         description: 'Production server',
       },
       

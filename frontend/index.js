@@ -1,7 +1,7 @@
 // Set the backend API URL
-const API = 'http://localhost:5000/api'; // Uncomment this for local testing
+//const API = 'http://localhost:5000/api'; // Uncomment this for local testing
 
-//const API = 'https://blog-api-4zax.onrender.com/api'; // Production backend
+const API = 'https://vephla-productivity-suite-crl2.onrender.com/api'; // Production backend
 
 
 const loginForm = document.getElementById("loginForm");

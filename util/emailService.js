@@ -34,7 +34,7 @@ exports.sendOtpEmail = async (to, otp) => {
 
           <div style="background: #f0f4f8; text-align: center; padding: 15px; font-size: 12px; color: #888;">
             © ${new Date().getFullYear()} Vephla Productivity-suite. All rights reserved.<br/>
-            <a href="https://Vephla Productivity-suite" style="color: #009900; text-decoration: none;">Visit Website</a>
+            <a href="https://vephla-productivity-suite-crl2.onrender.com" style="color: #009900; text-decoration: none;">Visit Website</a>
           </div>
         </div>
       </div>
@@ -89,7 +89,7 @@ exports.fortgotPassOtpEmail = async (to, otp) => {
 
           <div style="background: #f0f4f8; text-align: center; padding: 15px; font-size: 12px; color: #888;">
             © ${new Date().getFullYear()} Vephla Productivity-suite. All rights reserved.<br/>
-            <a href="https://Vephla Productivity-suite" style="color: #009900; text-decoration: none;">Visit Website</a>
+            <a href="https://vephla-productivity-suite-crl2.onrender.com" style="color: #009900; text-decoration: none;">Visit Website</a>
           </div>
         </div>
       </div>
